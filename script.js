@@ -1,9 +1,14 @@
-const button = document.getElementById('test-button')
-button.onclick = () => {
-  alert('動作確認ができました！')
+const messageField = document.getElementById('message-field')
+const button = document.getElementById('message-button')
+const messageList = document.getElementById('message-list')
+
+const addMessage = () => {
+  messageList.insertAdjacentHTML('afterbegin', `<p>${messageField.value}</p>`)
+  messageField.value = ''
 }
 
-const new_button = document.getElementById('new-button')
-new_button.onclick = () => {
-  alert('新しいボタンです！')
+button.onclick = () => addMessage()
+
+messageField.onkeydown = (e) => {
+  if (e.keyCode == '13') addMessage()
 }
